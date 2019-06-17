@@ -1,8 +1,6 @@
 /**
- * CascadeMultiPanelSelect Component for uxcore
- * @author changming<changming.zy@alibaba-inc.com>
+ * CascadeMultiPanelSelect Component
  *
- * Copyright 2015-2017, Uxcore Team, Alinw.
  * All rights reserved.
  */
 import React from 'react';
@@ -11,7 +9,13 @@ import deepcopy from 'lodash/cloneDeep';
 import PropTypes from 'prop-types';
 import { polyfill } from 'react-lifecycles-compat';
 import i18n from './locale';
+import { Icon } from 'ygd';
 import { getDisabledValueLabel, getCascadeSelected, getWidthStyle } from './utils';
+
+const MyIcon = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_587802_fmlwv8dnoj9.js', // 在 iconfont.cn 上生成
+});
+
 
 class CascadeMultiPanel extends React.Component {
   static getDerivedStateFromProps(props, state) {
@@ -187,6 +191,11 @@ class CascadeMultiPanel extends React.Component {
     const { parentNode } = treeNodeObj;
     if (parentNode) {
       const halfChecked = CascadeMultiPanel.getBotherCheckedState(parentNode.children, !checked);
+      // console.log('setFatherCheckState', parentNode, dataList);
+      const chkLength = parentNode.children.filter(item => item.checked === true).length;
+      // console.log('chkLength=', chkLength);
+      parentNode.chkLength = chkLength;
+
       if (halfChecked) {
         parentNode.checked = !halfChecked;
         parentNode.halfChecked = halfChecked;
@@ -303,6 +312,7 @@ class CascadeMultiPanel extends React.Component {
     } else if (level) {
       // 设置父级选中状态
       CascadeMultiPanel.setFatherCheckState(itemNode, itemNode.checked, dataList, keyCouldDuplicated);
+      // console.log('parentNode=', itemNode, dataList, keyCouldDuplicated);
     }
     this.setState({ dataList }, () => {
       this.setSelectResult();
@@ -578,8 +588,15 @@ class CascadeMultiPanel extends React.Component {
               /> :
                 null
             }
-            {item.label}
+            {item.label}{item.chkLength > 0 && (`(${item.chkLength})`)}
+
           </label>
+          <MyIcon className={classnames(
+            [`${prefixCls}-model-result-ul-list-right`],
+            'kuma-icon-right')
+          }
+          type="ego-right_16px" />
+
         </li>
       );
     });

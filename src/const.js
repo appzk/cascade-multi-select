@@ -123,17 +123,17 @@ export const options = [
 export const options2 = [{
   label: '常鸣—操作1',
   value: 1000,
-  "disabled": true,
+  'disabled': true,
   children: [
     {
       label: 'cj_test1',
       value: 2001,
-      "disabled": true,
+      'disabled': true,
       children: [
-        { "disabled": true, "label": "d", "value": 287374 }
-      ]
-    }
-  ]
+        { 'disabled': true, 'label': 'd', 'value': 287374 },
+      ],
+    },
+  ],
 }, {
   label: '常鸣—操作2',
   value: 1001,
@@ -143,10 +143,10 @@ export const options2 = [{
       value: 2001,
       disabled: true,
       children: [
-        { "disabled": true, "label": "d2", "value": 287375 }
-      ]
-    }
-  ]
+        { 'disabled': true, 'label': 'd2', 'value': 287375 },
+      ],
+    },
+  ],
 }];
 
 // 四级联动数据

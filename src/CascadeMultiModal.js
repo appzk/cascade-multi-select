@@ -1,19 +1,19 @@
 /**
- * CascadeMultiSelect Component for uxcore
- * @author changming<changming.zy@alibaba-inc.com>
- *
- * Copyright 2015-2017, Uxcore Team, Alinw.
+ * CascadeMultiSelect Component
  * All rights reserved.
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import deepcopy from 'lodash/cloneDeep';
-import { Button, Modal } from 'ygd';
+import { Button, Modal, Icon } from 'ygd';
 
 import CascadeMultiPanel from './CascadeMultiPanel';
 import i18n from './locale';
 
+const MyIcon = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_587802_fmlwv8dnoj9.js', // 在 iconfont.cn 上生成
+});
 class CascadeMultiModal extends React.Component {
 
   constructor(props) {
@@ -125,11 +125,12 @@ class CascadeMultiModal extends React.Component {
     const defaultWidth = width || cascadeSize * 150 + 220 + 2;
     return (
       <Modal
+
         className={`${prefixCls}-model`}
         title={title || i18n(locale).title}
         visible={visible}
         locale={locale}
-        width={defaultWidth}
+        width={defaultWidth + 20}
         onOk={() => {
           this.onOk();
         }}
@@ -218,13 +219,12 @@ class CascadeMultiModal extends React.Component {
       arr.push(
         <li className={`${prefixCls}-model-result-ul-list`} key={valueList[index]}>
           <span className={`${prefixCls}-model-result-ul-list-content`}>{item}</span>
-          <i
-            className={classnames(
-              [`${prefixCls}-model-result-ul-list-remove`],
-              'kuma-icon kuma-icon-close')
-            }
-            onClick={() => { this.onDelete(valueList[index]); }}
-          ></i>
+          <MyIcon className={classnames(
+            [`${prefixCls}-model-result-ul-list-remove`],
+            'kuma-icon kuma-icon-close')
+          }
+          type="ego-close_16px" onClick={() => { this.onDelete(valueList[index]); }} />
+
         </li>
       );
     });

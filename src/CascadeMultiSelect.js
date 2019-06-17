@@ -1,8 +1,5 @@
 /**
- * CascadeMultiSelect Component for uxcore
- * @author changming<changming.zy@alibaba-inc.com>
- *
- * Copyright 2015-2017, Uxcore Team, Alinw.
+ * CascadeMultiSelect Component
  * All rights reserved.
  */
 import React from 'react';
@@ -119,7 +116,7 @@ class CascadeMultiSelect extends React.Component {
     const { value, result } = this.state;
     const displayValue = CascadeMultiSelect.getInputValue(this.props, value);
     const {
-      valueList, labelList, leafList, cascadeSelected
+      valueList, labelList, leafList, cascadeSelected,
     } = result;
     this.setState({
       displayValue,
@@ -248,7 +245,7 @@ class CascadeMultiSelect extends React.Component {
 
   renderInput() {
     const {
-      prefixCls, placeholder, locale, readOnly, disabled
+      prefixCls, placeholder, locale, readOnly, disabled,
     } = this.props;
     const { displayValue } = this.state;
     if (readOnly) {
@@ -295,7 +292,7 @@ class CascadeMultiSelect extends React.Component {
 
   renderContent() {
     const {
-      className, prefixCls, size, allowClear, disabled
+      className, prefixCls, size, allowClear, disabled,
     } = this.props;
     const { displayValue, showSubMenu } = this.state;
 

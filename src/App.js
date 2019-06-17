@@ -2,7 +2,9 @@ import React from 'react';
 import CascadeMultiSelect from './CascadeMultiSelect';
 // import '../src/CascadeMultiSelect.less';
 import logo from './logo.svg';
-import "./CascadeMultiSelect.less";
+// import '~ygd/dist/ygd.less';
+
+import './CascadeMultiSelect.less';
 
 import './App.css';
 
@@ -195,14 +197,14 @@ class App extends React.Component {
           <CascadeMultiSelect
             config={[
               {
-                showSearch: true
+                showSearch: true,
               },
               {
-                checkable: true
+                checkable: true,
               },
               {
-                checkable: true
-              }
+                checkable: true,
+              },
             ]}
             options={options}
             allowClear={false}
@@ -297,7 +299,7 @@ class App extends React.Component {
               if (item.value === 'xihu') {
                 this.setState({
                   asyncOptions6: options2,
-                  demo6: []
+                  demo6: [],
                 });
               }
             }}
@@ -386,7 +388,7 @@ class App extends React.Component {
         <div style={{ position: 'relative', margin: 15, width: 300 }}>
           <CascadeMultiModal
             className={'ucms-modal'}
-            options={options2}
+            options={options}
             isCleanDisabledLabel
             value={this.state.demo10}
             size={'small'}

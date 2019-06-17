@@ -22,9 +22,6 @@
     "import/no-extraneous-dependencies": [
       0
     ],
-    "no-use-before-define": [
-      0
-    ],
     "jsx-a11y/no-static-element-interactions": [
       0
     ],
@@ -40,21 +37,8 @@
     "jsx-a11y/alt-text": [
       0
     ],
-    "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/anchor-has-content": "off",
-    "no-nested-ternary": [
-      0
-    ],
-    "arrow-body-style": [
-      0
-    ],
     "import/extensions": [
-      0
-    ],
-    "no-bitwise": [
-      0
-    ],
-    "no-cond-assign": [
       0
     ],
     "comma-dangle": [
@@ -65,7 +49,7 @@
     "no-dupe-args": 2,
     "no-dupe-keys": 2,
     "no-duplicate-case": 2,
-    "no-empty": 2,
+    "no-empty": 0,
     "no-empty-character-class": 2,
     "no-ex-assign": 2,
     "no-extra-boolean-cast": 0,
@@ -92,7 +76,7 @@
     "block-scoped-var": 0,
     "complexity": [
       2,
-      9
+      80
     ],
     "consistent-return": 0,
     "curly": [
@@ -120,7 +104,7 @@
     "no-case-declarations": 2,
     "no-div-regex": 2,
     "no-else-return": 0,
-    "no-empty-function": 2,
+    "no-empty-function": 0,
     "no-empty-pattern": 2,
     "no-eq-null": 1,
     "no-eval": 2,
@@ -208,7 +192,7 @@
       "never"
     ],
     "block-spacing": [
-      1,
+      0,
       "never"
     ],
     "brace-style": [
@@ -305,7 +289,7 @@
     "no-mixed-operators": 0,
     "no-mixed-spaces-and-tabs": 2,
     "no-multiple-empty-lines": [
-      2,
+      0,
       {
         "max": 1
       }
@@ -333,7 +317,7 @@
     "one-var-declaration-per-line": 0,
     "operator-assignment": 0,
     "operator-linebreak": [
-      2,
+      0,
       "after",
       {
         "overrides": {
@@ -391,8 +375,8 @@
     ],
     "unicode-bom": 0,
     "wrap-regex": 0,
-    "arrow-body-style": 2,
-    "arrow-parens": 2,
+    "arrow-body-style": 0,
+    "arrow-parens": 0,
     "arrow-spacing": [
       2,
       {
