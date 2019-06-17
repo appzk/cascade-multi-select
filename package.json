@@ -1,0 +1,38 @@
+{
+  "name": "cascade-multi-select",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "classnames": "^2.1.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "lodash": "^4.17.4",
+    "object-assign": "^4.0.0",
+    "prop-types": "15.x",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-lifecycles-compat": "^3.0.4",
+    "react-scripts": "3.0.1",
+    "ygd": "^3.15.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
