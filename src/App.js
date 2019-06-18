@@ -388,6 +388,7 @@ class App extends React.Component {
         <div style={{ position: 'relative', margin: 15, width: 300 }}>
           <CascadeMultiModal
             className={'ucms-modal'}
+            title="选择区域"
             options={options}
             isCleanDisabledLabel
             value={this.state.demo10}

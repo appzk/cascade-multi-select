@@ -24,6 +24,7 @@ class CascadeMultiModal extends React.Component {
       visible: false,
       expand: true,
       result: {},
+      selectedNums: 0,
     };
     this.data = {
       value: props.value,
@@ -67,6 +68,7 @@ class CascadeMultiModal extends React.Component {
         leafList,
       },
     }, () => {
+      console.log('onSelect', valueList, labelList, leafList);
       this.props.onSelect(valueList, labelList, leafList);
     });
   }
@@ -119,10 +121,40 @@ class CascadeMultiModal extends React.Component {
 
   renderDialog() {
     const { prefixCls, locale, title, cascadeSize, width } = this.props;
-    const { visible } = this.state;
+    const { visible, value } = this.state;
     if (!visible) { return null; }
     // 设置 dialog 默认宽度
-    const defaultWidth = width || cascadeSize * 150 + 220 + 2;
+    const defaultWidth = width || cascadeSize * 150 + 2; // 220 +
+    console.log('renderDialog', value);
+    const footer = (
+      <React.Fragment>
+        <div className="w50 tl">
+          <span>
+            已选择
+          </span>
+          <span className="selectedNum">
+            {value.length}
+          </span>
+          <span>
+            个城市
+          </span>
+        </div>
+        <div className="w50">
+          <Button type="default"
+            onClick={() => {
+              this.onCancel();
+            }}>
+            取消
+          </Button>
+          <Button type="primary"
+            onClick={() => {
+              this.onOk();
+            }}>
+            添加
+          </Button>
+        </div>
+      </React.Fragment>
+    );
     return (
       <Modal
 
@@ -137,12 +169,14 @@ class CascadeMultiModal extends React.Component {
         onCancel={() => {
           this.onCancel();
         }}
+        footer={footer}
       >
         {this.renderContent()}
       </Modal>
     );
   }
 
+  // {i18n(locale).selected} {this.renderResultNums()}
   renderContent() {
     const { value, options } = this.state;
     return (
@@ -154,6 +188,8 @@ class CascadeMultiModal extends React.Component {
           onSelect={(valueList, labelList, leafList) => {
             this.onSelect(valueList, labelList, leafList);
           }}
+          allowRenderResult={false}
+          renderResultNums={this.renderResultNums}
           ref={(r) => { this.refCascadeMulti = r; }}
           mode="mix"
         />

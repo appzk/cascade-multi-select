@@ -641,6 +641,7 @@ class CascadeMultiPanel extends React.Component {
     // 记录所有选中的节点
     this.selectNums = 0;
     this.getNums(dataList);
+    this.props.renderResultNums(this.handleSelectNums);
     return (
       <span>({this.handleSelectNums})</span>
     );
@@ -783,12 +784,12 @@ class CascadeMultiPanel extends React.Component {
   }
 
   render() {
-    const { className, prefixCls, cascadeSize, mode } = this.props;
+    const { className, prefixCls, cascadeSize, mode, allowRenderResult } = this.props;
     const arr = [];
     let minWidth = 0;
     for (let i = 0; i < cascadeSize; i += 1) {
       arr.push(this.renderUlList(i));
-      minWidth = 150 * cascadeSize + 222;
+      minWidth = allowRenderResult ? 150 * cascadeSize + 222 : 150 * cascadeSize + 2;
     }
     this.setPanelWidth();
     const back = (
@@ -802,7 +803,7 @@ class CascadeMultiPanel extends React.Component {
         style={{ width: minWidth }}
       >
         {arr}
-        {this.renderResult()}
+        {allowRenderResult && this.renderResult()}
         {this.renderDescription()}
       </div>
     );
@@ -825,9 +826,11 @@ CascadeMultiPanel.defaultProps = {
   value: [],
   notFoundContent: '',
   allowClear: true,
+  allowRenderResult: true,
   locale: 'zh-cn',
   onSelect: () => { },
   onItemClick: () => { },
+  renderResultNums: () => { },
   mode: 'independent',
   keyCouldDuplicated: false,
   isCleanDisabledLabel: false,
@@ -842,9 +845,11 @@ CascadeMultiPanel.propTypes = {
   value: PropTypes.array,
   notFoundContent: PropTypes.string,
   allowClear: PropTypes.bool,
+  allowRenderResult: PropTypes.bool,
   locale: PropTypes.string,
   onSelect: PropTypes.func,
   onItemClick: PropTypes.func,
+  renderResultNums: PropTypes.func,
   mode: PropTypes.oneOf(['independent', 'mix']),
   keyCouldDuplicated: PropTypes.bool,
   isCleanDisabledLabel: PropTypes.bool,

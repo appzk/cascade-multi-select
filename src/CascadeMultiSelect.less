@@ -561,6 +561,7 @@ div.@{__cascadeSelectPrefixCls}-disabled {
 
   border: 1px solid @_border;
   background-color: #ffffff;
+  border-radius: 4px;
 
   .@{__cascadeMultiSelectPrefixCls}-content {
     float: left;
@@ -568,7 +569,7 @@ div.@{__cascadeSelectPrefixCls}-disabled {
 
     width: 150px;
     height: 310px;
-    padding: 14px 0;
+    padding: 0;
 
     border-left: 1px solid @_border-light;
     background-color: #fff;
@@ -580,7 +581,7 @@ div.@{__cascadeSelectPrefixCls}-disabled {
       overflow: hidden;
 
       height: 28px;
-      padding: 0 15px;
+      padding: 0 10px;
 
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -836,8 +837,18 @@ div.@{__cascadeSelectPrefixCls}-disabled {
  */
 .@{__cascadeMultiSelectPrefixCls}-model {
   .@{__cascadeMultiSelectPrefixCls} {
-    border-left: none;
-    border-right: none;
+    // border-left: none;
+    // border-right: none;
+  }
+  .yg-modal-footer .w50{
+    display: inline-block;
+    width: 50%;
+  }
+  .yg-modal-footer .tl{
+    text-align: left;
+  }
+  .yg-modal-footer .selectedNum{
+    color: @text-primary-color;
   }
   &-result {
     margin: 15px 0;
