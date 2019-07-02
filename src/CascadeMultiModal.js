@@ -43,6 +43,7 @@ class CascadeMultiModal extends React.Component {
       options,
       result,
     };
+    console.log('onOk', valueList, labelList, leafList);
     this.props.onOk(valueList, labelList, leafList);
     this.setState({ visible: false });
   }
@@ -90,7 +91,7 @@ class CascadeMultiModal extends React.Component {
     });
   }
 
-  getSelectResult(value, dataList, keyArr, textArr) {
+  getSelectResult(value, dataList, keyArr, textArr, isTop = true) {
     if (dataList && dataList.length) {
       for (let i = 0; i < dataList.length; i++) {
         const item = dataList[i];
@@ -101,13 +102,14 @@ class CascadeMultiModal extends React.Component {
           value.splice(value.indexOf(item.value), 1);
         }
         if (item.children) {
-          this.getSelectResult(value, item.children, keyArr, textArr);
+          this.getSelectResult(value, item.children, keyArr, textArr, false);
         }
       }
     }
   }
 
   initResult(value, options) {
+    console.log(value, options, 'initResult');
     const keyArr = [];
     const textArr = [];
     const valueList = deepcopy(value);
@@ -169,7 +171,7 @@ class CascadeMultiModal extends React.Component {
         onCancel={() => {
           this.onCancel();
         }}
-        footer={footer}
+      // footer={footer}
       >
         {this.renderContent()}
       </Modal>
@@ -179,6 +181,7 @@ class CascadeMultiModal extends React.Component {
   // {i18n(locale).selected} {this.renderResultNums()}
   renderContent() {
     const { value, options } = this.state;
+
     return (
       <div>
         <CascadeMultiPanel
@@ -252,14 +255,13 @@ class CascadeMultiModal extends React.Component {
       style.maxHeight = 76;
     }
     labelList.forEach((item, index) => {
+      console.log('valueList[index]', valueList[index]);
       arr.push(
         <li className={`${prefixCls}-model-result-ul-list`} key={valueList[index]}>
           <span className={`${prefixCls}-model-result-ul-list-content`}>{item}</span>
-          <MyIcon className={classnames(
-            [`${prefixCls}-model-result-ul-list-remove`],
-            'kuma-icon kuma-icon-close')
-          }
-          type="ego-close_16px" onClick={() => { this.onDelete(valueList[index]); }} />
+          <MyIcon
+            className={`${prefixCls}-model-result-ul-list-remove yg-icon yg-icon-close`}
+            type="ego-close_16px" onClick={() => { this.onDelete(valueList[index]); }} />
 
         </li>
       );
@@ -296,7 +298,7 @@ class CascadeMultiModal extends React.Component {
 
 CascadeMultiModal.defaultProps = {
   className: '',
-  prefixCls: 'kuma-cascade-multi',
+  prefixCls: 'yg-cascade-multi',
   config: [],
   options: [],
   cascadeSize: 3,

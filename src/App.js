@@ -267,7 +267,7 @@ class App extends React.Component {
           <p>
             <button
               type="button"
-              className="kuma-button kuma-button-secondary"
+              className="yg-button yg-button-secondary"
               onClick={() => {
                 this.setState({
                   demo6: ['xihu', 'bingjiang', 'shandong'],
@@ -276,7 +276,7 @@ class App extends React.Component {
               }}
             >init</button> <button
               type="button"
-              className="kuma-button kuma-button-secondary"
+              className="yg-button yg-button-secondary"
               onClick={() => {
                 this.setState({
                   demo6: ['xihu'],

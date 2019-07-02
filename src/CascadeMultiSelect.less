@@ -2,7 +2,7 @@
  * CascadeMulti Component
  * All rights reserved.
  */
-@__cascadeSelectPrefixCls: kuma-cascader;
+@__cascadeSelectPrefixCls: yg-cascader;
 @__dropdownPrefixCls: yg-dropdown;
 @__cascadeGrayText: #666;
 @trigger-height-large: 1;
@@ -245,7 +245,7 @@
   &-menu {
     max-height: 300px;
     overflow: auto;
-    .kuma-dropdown-menu-item {
+    .yg-dropdown-menu-item {
       // color: @_text-color;
       .brand-danger {
         color: #e2062c;
@@ -263,7 +263,7 @@
     .transition();
     &:hover {
       border-color: @border-hover-color;
-      .kuma-icon {
+      .yg-icon {
         color: @border-hover-color;
       }
     }
@@ -289,7 +289,7 @@
     margin-top: -10px;
     cursor: pointer;
     .transition();
-    .kuma-icon {
+    .yg-icon {
       color: @__cascadeGrayText;
       font-size: 14px;
       &:hover {
@@ -299,12 +299,12 @@
   }
   &-focus {
     border-color: @border-focus-color;
-    .kuma-icon {
+    .yg-icon {
       color: @border-focus-color;
     }
     &:hover {
       border-color: @border-focus-color;
-      .kuma-icon {
+      .yg-icon {
         color: @border-focus-color;
       }
     }
@@ -350,12 +350,12 @@ div.@{__cascadeSelectPrefixCls}-disabled {
   border-color: @border-disabled-color;
   color: @text-disabled-color;
   cursor: not-allowed;
-  .kuma-icon {
+  .yg-icon {
     color: @border-disabled-color;
   }
   &:hover {
     border-color: @border-disabled-color;
-    .kuma-icon {
+    .yg-icon {
       color: @border-disabled-color;
     }
   }
@@ -504,7 +504,7 @@ div.@{__cascadeSelectPrefixCls}-disabled {
         box-sizing: inherit;
       }
     }
-    .kuma-select2 {
+    .yg-select2 {
       width: 100%;
     }
   }
@@ -544,7 +544,7 @@ div.@{__cascadeSelectPrefixCls}-disabled {
   }
 }
 
-@__cascadeMultiSelectPrefixCls: kuma-cascade-multi;
+@__cascadeMultiSelectPrefixCls: yg-cascade-multi;
 @backgroundColor: @bg-disabled-color;
 @_border: rgba(31,56,88,0.20);
 @_border-light: #e8e8e8;
@@ -674,8 +674,8 @@ div.@{__cascadeSelectPrefixCls}-disabled {
           white-space: nowrap;
 
           line-height: 25px;
-          .kuma-icon-triangle-down,
-          .kuma-icon-triangle-right {
+          .yg-icon-triangle-down,
+          .yg-icon-triangle-right {
             margin-right: 5px;
 
             vertical-align: middle;
@@ -910,7 +910,7 @@ div.@{__cascadeSelectPrefixCls}-disabled {
 
     color: @brand-primary;
   }
-  .kuma-dlg-body {
+  .yg-dlg-body {
     overflow: hidden;
 
     padding: 0;

@@ -189,9 +189,10 @@ class CascadeMultiPanel extends React.Component {
     const treeNodeObj =
       CascadeMultiPanel.getTreeNodeData(dataList, item.$id, null, keyCouldDuplicated);
     const { parentNode } = treeNodeObj;
+    console.log('setFatherCheckState', parentNode, dataList, 'item=', item);
+
     if (parentNode) {
-      const halfChecked = CascadeMultiPanel.getBotherCheckedState(parentNode.children, !checked);
-      // console.log('setFatherCheckState', parentNode, dataList);
+      const halfChecked = CascadeMultiPanel.getSiblingChecked(parentNode.children, !checked);
       const chkLength = parentNode.children.filter(item => item.checked === true).length;
       // console.log('chkLength=', chkLength);
       parentNode.chkLength = chkLength;
@@ -209,17 +210,17 @@ class CascadeMultiPanel extends React.Component {
 
   /**
    * 获取兄弟节点指定选中状态
-   * @param botherList 兄弟节点列表
+   * @param SiblingList 兄弟节点列表
    * @param state 查询的选中状态
    * @return 兄弟节点中包含对应状态结果 boolean
    */
-  static getBotherCheckedState(botherList, state) {
+  static getSiblingChecked(siblingList, state) {
     let handleCheckedState = false;
-    if (botherList && botherList.length) {
-      for (let i = 0, len = botherList.length; i < len; i += 1) {
+    if (siblingList && siblingList.length) {
+      for (let i = 0, len = siblingList.length; i < len; i += 1) {
         // 查询是否存在选中
         if (state) {
-          if (botherList[i].checked || botherList[i].halfChecked) {
+          if (siblingList[i].checked || siblingList[i].halfChecked) {
             handleCheckedState = true;
             break;
           }
@@ -227,8 +228,8 @@ class CascadeMultiPanel extends React.Component {
           // 查询是否存在未选中
           // 要么未选中，要么半选中状态
           if (
-            (!botherList[i].checked && !botherList[i].halfChecked) ||
-            (!botherList[i].checked && botherList[i].halfChecked)
+            (!siblingList[i].checked && !siblingList[i].halfChecked) ||
+            (!siblingList[i].checked && siblingList[i].halfChecked)
           ) {
             handleCheckedState = true;
             break;
@@ -310,6 +311,7 @@ class CascadeMultiPanel extends React.Component {
         itemDisabledNode = this.itemDisabledNodes.pop();
       }
     } else if (level) {
+      console.log('设置父级选中状态 level=', level);
       // 设置父级选中状态
       CascadeMultiPanel.setFatherCheckState(itemNode, itemNode.checked, dataList, keyCouldDuplicated);
       // console.log('parentNode=', itemNode, dataList, keyCouldDuplicated);
@@ -505,7 +507,7 @@ class CascadeMultiPanel extends React.Component {
           config[level] && config[level].showSearch ?
             <div style={{ margin: '-5px 5px 5px' }}>
               <input
-                className="kuma-input kuma-input-small-size"
+                className="yg-input yg-input-small-size"
                 placeholder={i18n(locale).filter}
                 onChange={(e) => {
                   const val = e.target.value;
@@ -543,7 +545,9 @@ class CascadeMultiPanel extends React.Component {
     const arr = [];
     // 设置当前级是否开启 checkbox
     const checkable = !(config[level] && config[level].checkable === false);
+
     dataList.forEach((item) => {
+      console.log(dataList, level, 'dataList-level', item, 'item');
       // 如果只是用面板，则默认选择第一项
       if (mode === 'independent' && !selectArray[level]) {
         selectArray[level] = item.$id;
@@ -570,15 +574,16 @@ class CascadeMultiPanel extends React.Component {
               [`${prefixCls}-item-label`]: true,
               [`${prefixCls}-item-disabled`]: item.disabled,
             })}
+            treepath={item.treepath}
           >
             {
               checkable ? <s
                 className={classnames({
-                  'kuma-tree-checkbox': true,
-                  'kuma-tree-checkbox-indeterminate': item.halfChecked,
-                  'kuma-tree-checkbox-checked': item.checked && !item.halfChecked,
-                  'kuma-tree-checkbox-checkbox-disabled': item.disabled,
-                  'kuma-tree-checkbox-disabled': item.disabled,
+                  'yg-tree-checkbox': true,
+                  'yg-tree-checkbox-indeterminate': item.halfChecked,
+                  'yg-tree-checkbox-checked': item.checked && !item.halfChecked,
+                  'yg-tree-checkbox-checkbox-disabled': item.disabled,
+                  'yg-tree-checkbox-disabled': item.disabled,
                 })}
                 onClick={() => {
                   if (!item.disabled) {
@@ -588,14 +593,14 @@ class CascadeMultiPanel extends React.Component {
               /> :
                 null
             }
-            {item.label}{item.chkLength > 0 && (`(${item.chkLength})`)}
+            {item.label}
+            {item.checked}{!!item.children && !item.halfChecked && item.checked && item.children.length > 0 && (`(${item.children.length})`)}
+
+            {item.halfChecked && item.chkLength > 0 && (`(${item.chkLength})`)}
 
           </label>
-          <MyIcon className={classnames(
-            [`${prefixCls}-model-result-ul-list-right`],
-            'kuma-icon-right')
-          }
-          type="ego-right_16px" />
+          <MyIcon className={`${prefixCls}-model-result-ul-list-right yg-icon-right`}
+            type="ego-right_16px" />
 
         </li>
       );
@@ -758,10 +763,10 @@ class CascadeMultiPanel extends React.Component {
   renderExpand(item) {
     let arr = [];
     if (item.children && item.children.length) {
-      arr = !item.expand ? <i className="kuma-icon kuma-icon-triangle-down" /> :
-        <i className="kuma-icon kuma-icon-triangle-right" />;
+      arr = !item.expand ? <i className="yg-icon yg-icon-triangle-down" /> :
+        <i className="yg-icon yg-icon-triangle-right" />;
     } else {
-      // 21 = kuma-icon的占位宽度
+      // 21 = yg-icon的占位宽度
       arr = <span style={{ width: '21px', display: 'inline-block' }} />;
     }
     return arr;
@@ -819,7 +824,7 @@ class CascadeMultiPanel extends React.Component {
 
 CascadeMultiPanel.defaultProps = {
   className: '',
-  prefixCls: 'kuma-cascade-multi',
+  prefixCls: 'yg-cascade-multi',
   config: [],
   options: [],
   cascadeSize: 3,

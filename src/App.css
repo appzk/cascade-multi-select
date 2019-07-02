@@ -11,18 +11,14 @@ dl li {
   list-style: none;
 }
 /**
- * Tree Component Style for uxcore
- * @author
- *
- * Copyright 2014-2015, Uxcore Team, Alinw.
- * All rights reserved.
+ * Tree Component Style
  */
- .kuma-tree {
+ .yg-tree {
   color: #666666;
   margin: 0;
   padding: 2px 20px;
 }
-.kuma-tree li {
+.yg-tree li {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -30,7 +26,7 @@ dl li {
   outline: 0;
   line-height: 26px;
 }
-.kuma-tree li .kuma-tree-dropdown-section {
+.yg-tree li .yg-tree-dropdown-section {
   width: calc(100% - 16px);
   display: inline-block;
   padding: 5px 4px;
@@ -38,36 +34,36 @@ dl li {
   line-height: 1;
   cursor: pointer;
 }
-.kuma-tree li .kuma-tree-dropdown-section-icon {
+.yg-tree li .yg-tree-dropdown-section-icon {
   font-size: 14px;
   cursor: pointer;
   color: rgba(31, 56, 88, 0.4);
 }
-.kuma-tree li .kuma-tree-dropdown-section-icon:hover {
+.yg-tree li .yg-tree-dropdown-section-icon:hover {
   color: rgba(31, 56, 88, 0.8);
 }
-.kuma-tree li .kuma-tree-dropdown-section:hover {
+.yg-tree li .yg-tree-dropdown-section:hover {
   color: rgba(0, 0, 0, 0.8);
   background: rgba(31, 56, 88, 0.04);
 }
-.kuma-tree li .kuma-tree-dropdown-section:hover .kuma-tree-dropdown-section-right-section {
+.yg-tree li .yg-tree-dropdown-section:hover .yg-tree-dropdown-section-right-section {
   visibility: visible;
 }
-.kuma-tree li .kuma-tree-dropdown-section-right-section {
+.yg-tree li .yg-tree-dropdown-section-right-section {
   display: inline-block;
   float: right;
   visibility: hidden;
 }
-.kuma-tree li .kuma-tree-dropdown-section .kuma-tree-dropdown-menu > ul {
+.yg-tree li .yg-tree-dropdown-section .yg-tree-dropdown-menu > ul {
   min-width: 96px;
   padding: 0;
   margin: 2px 0 0 0;
 }
-.kuma-tree li .kuma-tree-dropdown-section .kuma-tree-dropdown-menu > ul li {
+.yg-tree li .yg-tree-dropdown-section .yg-tree-dropdown-menu > ul li {
   line-height: 36px;
   padding: 0 12px;
 }
-.kuma-tree li .draggable {
+.yg-tree li .draggable {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -76,32 +72,32 @@ dl li {
   -khtml-user-drag: element;
   -webkit-user-drag: element;
 }
-.kuma-tree li.drag-over > .draggable {
+.yg-tree li.drag-over > .draggable {
   background-color: #ff6f00;
   color: white;
   border: 1px #ff6f00 solid;
   opacity: 0.8;
 }
-.kuma-tree li.drag-over-gap-top > .draggable {
+.yg-tree li.drag-over-gap-top > .draggable {
   border-top: 1px #ff6f00 solid;
   border-radius: 0;
 }
-.kuma-tree li.drag-over-gap-bottom > .draggable {
+.yg-tree li.drag-over-gap-bottom > .draggable {
   border-bottom: 1px #ff6f00 solid;
   border-radius: 0;
 }
-.kuma-tree li.filter-node > .kuma-tree-node-content-wrapper {
+.yg-tree li.filter-node > .yg-tree-node-content-wrapper {
   font-weight: bold;
 }
-.kuma-tree li ul {
+.yg-tree li ul {
   margin: 0;
   padding: 0 0 0 20px;
 }
-.kuma-tree li ul.kuma-tree-line {
+.yg-tree li ul.yg-tree-line {
   background: url("https://t.alipayobjects.com/images/T13BtfXl0mXXXXXXXX.gif") 0 0 repeat-y;
 }
-.kuma-tree li a,
-.kuma-tree li .kuma-tree-node-content-wrapper-normal {
+.yg-tree li a,
+.yg-tree li .yg-tree-node-content-wrapper-normal {
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
@@ -110,19 +106,19 @@ dl li {
   color: rgba(0, 0, 0, 0.6);
   border-radius: 3px;
 }
-.kuma-tree li a:hover,
-.kuma-tree li .kuma-tree-node-content-wrapper-normal:hover {
+.yg-tree li a:hover,
+.yg-tree li .yg-tree-node-content-wrapper-normal:hover {
   color: rgba(0, 0, 0, 0.8);
   background: rgba(31, 56, 88, 0.04);
 }
-.kuma-tree li a.kuma-tree-node-selected,
-.kuma-tree li .kuma-tree-node-content-wrapper-normal.kuma-tree-node-selected {
+.yg-tree li a.yg-tree-node-selected,
+.yg-tree li .yg-tree-node-content-wrapper-normal.yg-tree-node-selected {
   color: rgba(0, 0, 0, 0.8);
   background: rgba(31, 56, 88, 0.06);
 }
-.kuma-tree li span.kuma-tree-switcher-noop,
-.kuma-tree li span.kuma-tree-switcher,
-.kuma-tree li span.kuma-tree-iconEle {
+.yg-tree li span.yg-tree-switcher-noop,
+.yg-tree li span.yg-tree-switcher,
+.yg-tree li span.yg-tree-iconEle {
   margin: 0 2px;
   width: 16px;
   height: 16px;
@@ -136,85 +132,85 @@ dl li {
   background-attachment: scroll;
   background-image: url('https://aliwork.alicdn.com/tps/TB1k_tsKpXXXXcQXFXXXXXXXXXX-130-87.png');
 }
-.kuma-tree li span.kuma-tree-icon_loading {
+.yg-tree li span.yg-tree-icon_loading {
   margin-right: 2px;
   background: url('https://t.alipayobjects.com/images/rmsweb/T1YxhiXgJbXXXXXXXX.gif') no-repeat scroll 0 0;
 }
-.kuma-tree li span.kuma-tree-switcher-noop {
+.yg-tree li span.yg-tree-switcher-noop {
   background-image: none;
 }
-.kuma-tree li span.kuma-tree-switcher-disabled {
+.yg-tree li span.yg-tree-switcher-disabled {
   background: #ffffff;
   position: relative;
 }
-.kuma-tree li span.kuma-tree-switcher-disabled:after {
+.yg-tree li span.yg-tree-switcher-disabled:after {
   content: '-';
   position: absolute;
   top: 8px;
   left: 6px;
   color: gray;
 }
-.kuma-tree li span.kuma-tree-switcher.kuma-tree-roots_open {
+.yg-tree li span.yg-tree-switcher.yg-tree-roots_open {
   background-position: -112px 0px;
 }
-.kuma-tree li span.kuma-tree-switcher.kuma-tree-roots_close {
+.yg-tree li span.yg-tree-switcher.yg-tree-roots_close {
   background-position: -94px 0px;
 }
-.kuma-tree li span.kuma-tree-switcher.kuma-tree-center_open {
+.yg-tree li span.yg-tree-switcher.yg-tree-center_open {
   background-position: -112px -18px;
 }
-.kuma-tree li span.kuma-tree-switcher.kuma-tree-center_close {
+.yg-tree li span.yg-tree-switcher.yg-tree-center_close {
   background-position: -94px -18px;
 }
-.kuma-tree li span.kuma-tree-switcher.kuma-tree-bottom_open {
+.yg-tree li span.yg-tree-switcher.yg-tree-bottom_open {
   background-position: -112px -36px;
 }
-.kuma-tree li span.kuma-tree-switcher.kuma-tree-bottom_close {
+.yg-tree li span.yg-tree-switcher.yg-tree-bottom_close {
   background-position: -94px -36px;
 }
-.kuma-tree li.kuma-tree-treenode-disabled a,
-.kuma-tree li.kuma-tree-treenode-disabled .kuma-tree-node-content-wrapper-normal {
+.yg-tree li.yg-tree-treenode-disabled a,
+.yg-tree li.yg-tree-treenode-disabled .yg-tree-node-content-wrapper-normal {
   color: rgba(31, 56, 88, 0.3);
 }
-.kuma-tree li.kuma-tree-treenode-disabled a:hover,
-.kuma-tree li.kuma-tree-treenode-disabled .kuma-tree-node-content-wrapper-normal:hover {
+.yg-tree li.yg-tree-treenode-disabled a:hover,
+.yg-tree li.yg-tree-treenode-disabled .yg-tree-node-content-wrapper-normal:hover {
   background: transparent;
 }
-.kuma-tree-child-tree {
+.yg-tree-child-tree {
   display: none;
 }
-.kuma-tree-child-tree-open {
+.yg-tree-child-tree-open {
   display: block;
 }
-.kuma-tree-collapse {
+.yg-tree-collapse {
   overflow: hidden;
   transition: height 0.3s ease-out, opacity 0.3s ease-out;
 }
-.use-svg .kuma-tree-switcher.kuma-tree-noline_open {
+.use-svg .yg-tree-switcher.yg-tree-noline_open {
   background: url('https://img.alicdn.com/tps/TB1IvveJVXXXXbcXFXXXXXXXXXX-14-10.svg') 50% 50% no-repeat;
   background-size: 50% auto;
   transform: rotate(0deg);
   transition: all .3s;
 }
-.use-svg .kuma-tree-switcher.kuma-tree-noline_close {
+.use-svg .yg-tree-switcher.yg-tree-noline_close {
   background: url('https://img.alicdn.com/tps/TB1IvveJVXXXXbcXFXXXXXXXXXX-14-10.svg') 50% 50% no-repeat;
   background-size: 50% auto ;
   transform: rotate(-90deg);
   transition: transform .3s;
 }
-.use-svg .kuma-tree-switcher.kuma-tree-switcher_open {
+.use-svg .yg-tree-switcher.yg-tree-switcher_open {
   background: url('https://img.alicdn.com/tps/TB1IvveJVXXXXbcXFXXXXXXXXXX-14-10.svg') 50% 50% no-repeat;
   background-size: 50% auto;
   transform: rotate(0deg);
   transition: all .3s;
 }
-.use-svg .kuma-tree-switcher.kuma-tree-switcher_close {
+.use-svg .yg-tree-switcher.yg-tree-switcher_close {
   background: url('https://img.alicdn.com/tps/TB1IvveJVXXXXbcXFXXXXXXXXXX-14-10.svg') 50% 50% no-repeat;
   background-size: 50% auto ;
   transform: rotate(-90deg);
   transition: transform .3s;
 }
-.use-svg .kuma-tree-checkbox {
+.use-svg .yg-tree-checkbox {
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -224,34 +220,34 @@ dl li {
   outline: none;
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%3E%0A%20%20%20%20%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2214%22%20height%3D%2214%22%20fill%3D%22white%22%20stroke%3D%22rgba(31%2C56%2C88%2C0.30)%22%20stroke-width%3D%221px%22%20rx%3D%223%22%20ry%3D%223%22%20%2F%3E%0A%3C%2Fsvg%3E") no-repeat;
 }
-.use-svg .kuma-tree-checkbox.kuma-tree-checkbox-checked {
+.use-svg .yg-tree-checkbox.yg-tree-checkbox-checked {
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%3E%0A%09%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2214%22%20height%3D%2214%22%20fill%3D%22%23ff6f00%22%20stroke%3D%22%23ff6f00%22%20stroke-width%3D%221px%22%20rx%3D%223%22%20ry%3D%223%22%20%2F%3E%0A%09%3Cpolyline%20points%3D%225%209%2C7.5%2011%2C12%205.5%22%20stroke%3D%22white%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22square%22%20fill%3D%22transparent%22%2F%3E%0A%3C%2Fsvg%3E%0A") no-repeat;
 }
-.use-svg .kuma-tree-checkbox.kuma-tree-checkbox-checked:hover {
+.use-svg .yg-tree-checkbox.yg-tree-checkbox-checked:hover {
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%3E%0A%09%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2214%22%20height%3D%2214%22%20fill%3D%22%23ff6f00%22%20stroke%3D%22%23ff6f00%22%20stroke-width%3D%221px%22%20rx%3D%223%22%20ry%3D%223%22%20%2F%3E%0A%09%3Cpolyline%20points%3D%225%209%2C7.5%2011%2C12%205.5%22%20stroke%3D%22white%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22square%22%20fill%3D%22transparent%22%2F%3E%0A%3C%2Fsvg%3E%0A") no-repeat;
 }
-.use-svg .kuma-tree-checkbox.kuma-tree-checkbox-checked.kuma-tree-checkbox-disabled {
+.use-svg .yg-tree-checkbox.yg-tree-checkbox-checked.yg-tree-checkbox-disabled {
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%3E%0A%09%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2214%22%20height%3D%2214%22%20fill%3D%22rgba(31%2C56%2C88%2C0.04)%22%20stroke%3D%22rgba(31%2C56%2C88%2C0.2)%22%20stroke-width%3D%221px%22%20rx%3D%223%22%20ry%3D%223%22%20%2F%3E%0A%09%3Cpolyline%20points%3D%225%209%2C7.5%2011%2C12%205.5%22%20stroke%3D%22rgba(31%2C56%2C88%2C0.2)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22square%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E%0A") no-repeat;
 }
-.use-svg .kuma-tree-checkbox.kuma-tree-checkbox-indeterminate {
+.use-svg .yg-tree-checkbox.yg-tree-checkbox-indeterminate {
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%3E%0A%20%20%20%20%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2214%22%20height%3D%2214%22%20fill%3D%22%23ff6f00%22%20stroke%3D%22%23ff6f00%22%20stroke-width%3D%221px%22%20rx%3D%223%22%20ry%3D%223%22%20%2F%3E%0A%09%3Cline%20x1%3D%223%22%20y1%3D%228%22%20x2%3D%2213%22%20y2%3D%228%22%20stroke-width%3D%222%22%20stroke%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E") no-repeat;
 }
-.use-svg .kuma-tree-checkbox.kuma-tree-checkbox-indeterminate:hover {
+.use-svg .yg-tree-checkbox.yg-tree-checkbox-indeterminate:hover {
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%3E%0A%20%20%20%20%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2214%22%20height%3D%2214%22%20fill%3D%22%23ff6f00%22%20stroke%3D%22%23ff6f00%22%20stroke-width%3D%221px%22%20rx%3D%223%22%20ry%3D%223%22%20%2F%3E%0A%09%3Cline%20x1%3D%223%22%20y1%3D%228%22%20x2%3D%2213%22%20y2%3D%228%22%20stroke-width%3D%222%22%20stroke%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E") no-repeat;
 }
-.use-svg .kuma-tree-checkbox:hover {
+.use-svg .yg-tree-checkbox:hover {
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%3E%0A%20%20%20%20%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2214%22%20height%3D%2214%22%20fill%3D%22white%22%20stroke%3D%22%23ff6f00%22%20stroke-width%3D%221px%22%20rx%3D%223%22%20ry%3D%223%22%20%2F%3E%0A%3C%2Fsvg%3E") no-repeat;
 }
-.use-svg .kuma-tree-checkbox.kuma-tree-checkbox-disabled {
+.use-svg .yg-tree-checkbox.yg-tree-checkbox-disabled {
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%3E%0A%20%20%20%20%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2214%22%20height%3D%2214%22%20fill%3D%22rgba(31%2C56%2C88%2C0.04)%22%20stroke%3D%22rgba(31%2C56%2C88%2C0.2)%22%20stroke-width%3D%221px%22%20rx%3D%223%22%20ry%3D%223%22%20%2F%3E%0A%3C%2Fsvg%3E%0A") no-repeat;
 }
-.no-svg .kuma-tree-switcher.kuma-tree-switcher_open {
+.no-svg .yg-tree-switcher.yg-tree-switcher_open {
   background-position: -115px -72px;
 }
-.no-svg .kuma-tree-switcher.kuma-tree-switcher_close {
+.no-svg .yg-tree-switcher.yg-tree-switcher_close {
   background-position: -97px -72px;
 }
-.no-svg .kuma-tree-checkbox {
+.no-svg .yg-tree-checkbox {
   margin-right: 2px;
   display: inline-block;
   vertical-align: middle;
@@ -262,25 +258,21 @@ dl li {
   height: 14px;
   background-position: 0 0;
 }
-.no-svg .kuma-tree-checkbox.kuma-tree-checkbox-checked {
+.no-svg .yg-tree-checkbox.yg-tree-checkbox-checked {
   background-position: -15px 0;
 }
-.no-svg .kuma-tree-checkbox.kuma-tree-checkbox-indeterminate {
+.no-svg .yg-tree-checkbox.yg-tree-checkbox-indeterminate {
   background-position: -15px -28px;
 }
-.no-svg .kuma-tree-checkbox-disabled {
+.no-svg .yg-tree-checkbox-disabled {
   background-position: 0 -28px !important;
 }
-.kuma-tree-icon-valign {
+.yg-tree-icon-valign {
   vertical-align: -2px;
   margin-right: 3px;
 }
 /**
- * Dropdown Component Style for uxcore
- * @author
- *
- * Copyright 2014-2015, Uxcore Team, Alinw.
- * All rights reserved.
+ * Dropdown Component Style
  */
  .yg-dropdown {
   position: absolute;
@@ -506,28 +498,24 @@ dl li {
 
 
 /**
- * CascadeSelect Component Style for uxcore
- * @author changming
- *
- * Copyright 2015-2017, Uxcore Team, Alinw.
- * All rights reserved.
+ * CascadeSelect Component Style 
  */
-.kuma-cascader {
+.yg-cascader {
   box-sizing: border-box;
 }
-.kuma-cascader *,
-.kuma-cascader *:after,
-.kuma-cascader *:before {
+.yg-cascader *,
+.yg-cascader *:after,
+.yg-cascader *:before {
   box-sizing: inherit;
 }
-.kuma-cascader-menu {
+.yg-cascader-menu {
   max-height: 300px;
   overflow: auto;
 }
-.kuma-cascader-menu .yg-dropdown-menu-item .brand-danger {
+.yg-cascader-menu .yg-dropdown-menu-item .brand-danger {
   color: #F04631;
 }
-.kuma-cascader-wrapper {
+.yg-cascader-wrapper {
   min-height: 36px;
   width: 100%;
   position: relative;
@@ -537,18 +525,18 @@ dl li {
   background-color: white;
   transition: all .3s;
 }
-.kuma-cascader-wrapper:hover {
+.yg-cascader-wrapper:hover {
   border-color: #a5afbc;
 }
-.kuma-cascader-wrapper:hover .kuma-icon {
+.yg-cascader-wrapper:hover .yg-icon {
   color: #a5afbc;
 }
-.kuma-cascader-clearable:hover .kuma-cascader-close-wrap {
+.yg-cascader-clearable:hover .yg-cascader-close-wrap {
   visibility: visible;
   opacity: 1;
   transform: scale(1);
 }
-.kuma-cascader-close-wrap {
+.yg-cascader-close-wrap {
   visibility: hidden;
   opacity: 0;
   transform: scale(0.6);
@@ -563,46 +551,46 @@ dl li {
   cursor: pointer;
   transition: all .3s;
 }
-.kuma-cascader-close-wrap .kuma-icon {
+.yg-cascader-close-wrap .yg-icon {
   color: #a5afbc;
   font-size: 14px;
 }
-.kuma-cascader-close-wrap .kuma-icon:hover {
+.yg-cascader-close-wrap .yg-icon:hover {
   color: #8895a6;
 }
-.kuma-cascader-focus {
+.yg-cascader-focus {
   border-color: #79889b;
 }
-.kuma-cascader-focus .kuma-icon {
+.yg-cascader-focus .yg-icon {
   color: #79889b;
 }
-.kuma-cascader-focus:hover {
+.yg-cascader-focus:hover {
   border-color: #79889b;
 }
-.kuma-cascader-focus:hover .kuma-icon {
+.yg-cascader-focus:hover .yg-icon {
   color: #79889b;
 }
-.kuma-cascader-trigger {
+.yg-cascader-trigger {
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-right: 30px;
 }
-.kuma-cascader-text {
+.yg-cascader-text {
   line-height: 36px;
   padding: 0 10px;
 }
-.kuma-cascader-text > input:-ms-input-placeholder {
+.yg-cascader-text > input:-ms-input-placeholder {
   color: #a5afbc !important;
 }
-.kuma-cascader-text > input::placeholder {
+.yg-cascader-text > input::placeholder {
   color: #a5afbc !important;
 }
-.kuma-cascader-placeholder {
+.yg-cascader-placeholder {
   color: #a5afbc;
 }
-.kuma-cascader-arrow {
+.yg-cascader-arrow {
   color: #bcc3cd;
   position: absolute;
   right: 2px;
@@ -614,38 +602,38 @@ dl li {
   text-align: center;
   transition: all .3s;
 }
-.kuma-cascader-arrow-reverse {
+.yg-cascader-arrow-reverse {
   transform: rotate(180deg);
 }
-div.kuma-cascader-disabled {
+div.yg-cascader-disabled {
   background: rgba(31, 56, 88, 0.04);
   border-color: #d2d7de;
   color: rgba(31, 56, 88, 0.3);
   cursor: not-allowed;
 }
-div.kuma-cascader-disabled .kuma-icon {
+div.yg-cascader-disabled .yg-icon {
   color: #d2d7de;
 }
-div.kuma-cascader-disabled:hover {
+div.yg-cascader-disabled:hover {
   border-color: #d2d7de;
 }
-div.kuma-cascader-disabled:hover .kuma-icon {
+div.yg-cascader-disabled:hover .yg-icon {
   color: #d2d7de;
 }
-.kuma-cascader-submenu-warpper {
+.yg-cascader-submenu-warpper {
   box-sizing: border-box;
 }
-.kuma-cascader-submenu-warpper *,
-.kuma-cascader-submenu-warpper *:after,
-.kuma-cascader-submenu-warpper *:before {
+.yg-cascader-submenu-warpper *,
+.yg-cascader-submenu-warpper *:after,
+.yg-cascader-submenu-warpper *:before {
   box-sizing: inherit;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-bottom-bar {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-bottom-bar {
   padding: 10px 0;
   text-align: center;
   border-top: 1px solid rgba(31, 56, 88, 0.1);
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-selection {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-selection {
   float: right;
   height: 100%;
   overflow: hidden;
@@ -653,25 +641,25 @@ div.kuma-cascader-disabled:hover .kuma-icon {
   z-index: 1;
   position: relative;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-selection-title {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-selection-title {
   margin: 5px 0 5px 10px;
   color: #999;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-body {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-body {
   margin: 10px;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-body i {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-body i {
   font-size: 12px;
   color: #999;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-body > div {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-all-body > div {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   height: 24px;
   line-height: 24px;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu {
   margin: 0;
   background-color: white;
   border: 1px solid #d9d9d9;
@@ -679,25 +667,25 @@ div.kuma-cascader-disabled:hover .kuma-icon {
   box-shadow: 0 1px 4px 0 rgba(31, 56, 88, 0.15);
   overflow: hidden;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-border {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-border {
   margin: 0;
   border-top: 1px solid rgba(31, 56, 88, 0.1);
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap {
   height: 120px;
   overflow: hidden;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap > ul {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap > ul {
   line-height: 36px;
   height: 100%;
   overflow: auto;
   float: left;
   border-right: 1px solid rgba(31, 56, 88, 0.1);
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap > ul:last-child {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap > ul:last-child {
   border-right: none;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li {
   padding: 0 20px 0 10px;
   white-space: nowrap;
   overflow: hidden;
@@ -705,21 +693,21 @@ div.kuma-cascader-disabled:hover .kuma-icon {
   cursor: pointer;
   transition: all .3s;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li:hover,
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li.active {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li:hover,
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li.active {
   background-color: rgba(31, 56, 88, 0.06);
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li.active {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li.active {
   font-weight: bolder;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li:active {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap li:active {
   font-weight: bolder;
   background-color: rgba(27, 49, 77, 0.06);
 }
-.kuma-cascader-submenu-warpper ul.yg-dropdown-menu-hoverable li {
+.yg-cascader-submenu-warpper ul.yg-dropdown-menu-hoverable li {
   position: relative;
 }
-.kuma-cascader-submenu-warpper ul.yg-dropdown-menu-hoverable li:after {
+.yg-cascader-submenu-warpper ul.yg-dropdown-menu-hoverable li:after {
   font-family: kuma !important;
   font-size: 16px;
   font-style: normal;
@@ -731,45 +719,45 @@ div.kuma-cascader-disabled:hover .kuma-icon {
   top: 0;
   color: #666;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-center-loading {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-center-loading {
   margin: 0 auto;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap > ul {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-submenu-wrap > ul {
   position: relative;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-size-middle .yg-dropdown-menu-submenu-wrap > ul {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-size-middle .yg-dropdown-menu-submenu-wrap > ul {
   line-height: 32px;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-size-small .yg-dropdown-menu-submenu-wrap > ul {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-size-small .yg-dropdown-menu-submenu-wrap > ul {
   line-height: 28px;
 }
-.kuma-cascader-submenu-warpper .yg-dropdown-menu-item-description-wrap {
+.yg-cascader-submenu-warpper .yg-dropdown-menu-item-description-wrap {
   height: 50px;
   overflow: hidden;
   padding: 10px 15px;
   border-top: 1px solid #ddd;
 }
-.kuma-cascader-select-wrap {
+.yg-cascader-select-wrap {
   margin-right: -15px;
   box-sizing: border-box;
 }
-.kuma-cascader-select-wrap *,
-.kuma-cascader-select-wrap *:after,
-.kuma-cascader-select-wrap *:before {
+.yg-cascader-select-wrap *,
+.yg-cascader-select-wrap *:after,
+.yg-cascader-select-wrap *:before {
   box-sizing: inherit;
 }
-.kuma-cascader-select-wrap .kuma-select2 {
+.yg-cascader-select-wrap .yg-select2 {
   width: 100%;
 }
-.kuma-cascader-select-item-wrap {
+.yg-cascader-select-item-wrap {
   display: inline-block;
   padding-right: 15px;
 }
-.kuma-cascader-select-loading {
+.yg-cascader-select-loading {
   width: 16px;
   height: 16px;
   position: absolute;
@@ -777,19 +765,19 @@ div.kuma-cascader-disabled:hover .kuma-icon {
   right: 8px;
   background: #fff url(data:image/gif;base64, R0lGODlhEAAQAKIGAMLY8YSx5HOm4Mjc88/g9Ofw+v ///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAGACwAAAAAEAAQAAADMGi6RbUwGjKIXCAA016PgRBElAVlG/RdLOO0X9nK61W39qvqiwz5Ls/rRqrggsdkAgAh+QQFCgAGACwCAAAABwAFAAADD2hqELAmiFBIYY4MAutdCQAh+QQFCgAGACwGAAAABwAFAAADD1hU1kaDOKMYCGAGEeYFCQAh+QQFCgAGACwKAAIABQAHAAADEFhUZjSkKdZqBQG0IELDQAIAIfkEBQoABgAsCgAGAAUABwAAAxBoVlRKgyjmlAIBqCDCzUoCACH5BAUKAAYALAYACgAHAAUAAAMPaGpFtYYMAgJgLogA610JACH5BAUKAAYALAIACgAHAAUAAAMPCAHWFiI4o1ghZZJB5i0JACH5BAUKAAYALAAABgAFAAcAAAMQCAFmIaEp1motpDQySMNFAgA7) no-repeat;
 }
-.kuma-cascader-internal-select-item-wrap {
+.yg-cascader-internal-select-item-wrap {
   position: relative;
 }
-.kuma-cascader-size-middle.kuma-cascader-wrapper {
+.yg-cascader-size-middle.yg-cascader-wrapper {
   min-height: 32px;
 }
-.kuma-cascader-size-middle .kuma-cascader-text {
+.yg-cascader-size-middle .yg-cascader-text {
   line-height: 30px;
 }
-.kuma-cascader-size-small.kuma-cascader-wrapper {
+.yg-cascader-size-small.yg-cascader-wrapper {
   min-height: 28px;
 }
-.kuma-cascader-size-small .kuma-cascader-text {
+.yg-cascader-size-small .yg-cascader-text {
   line-height: 26px;
 }
 

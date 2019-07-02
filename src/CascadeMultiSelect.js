@@ -12,7 +12,7 @@ import CascadeMultiModal from './CascadeMultiModal';
 import i18n from './locale';
 import { getDisabledValueLabel, getWidthStyle } from './utils';
 
-const CASCADER_SELECT_PREFIXCLS = 'kuma-cascader';
+const CASCADER_SELECT_PREFIXCLS = 'yg-cascader';
 
 const makeOptionsChecked = (value = [], options) => {
   // 没有value则需要设置check为false
@@ -279,7 +279,7 @@ class CascadeMultiSelect extends React.Component {
     return (
       <div className={`${CASCADER_SELECT_PREFIXCLS}-close-wrap`}>
         <i
-          className="kuma-icon kuma-icon-error"
+          className="yg-icon yg-icon-error"
           onClick={(e) => {
             this.onCleanSelect();
             e.preventDefault();
@@ -323,7 +323,7 @@ class CascadeMultiSelect extends React.Component {
             [`${CASCADER_SELECT_PREFIXCLS}-arrow-reverse`]: showSubMenu,
           })}
         >
-          <i className="kuma-icon kuma-icon-triangle-down" />
+          <i className="yg-icon yg-icon-triangle-down" />
         </div>
         {this.renderCloseIcon()}
       </div>
@@ -395,7 +395,7 @@ class CascadeMultiSelect extends React.Component {
 
 CascadeMultiSelect.defaultProps = {
   className: '',
-  prefixCls: 'kuma-cascade-multi',
+  prefixCls: 'yg-cascade-multi',
   config: [],
   options: [],
   cascadeSize: 3,

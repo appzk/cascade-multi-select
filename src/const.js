@@ -2,31 +2,39 @@ export const options = [
   {
     value: 'zhejiang',
     label: '浙江',
+    treepath: 'zhejiang',
     children: [{
       value: 'hangzhou',
       label: '杭州',
       description: '美丽富饶的新一线城市',
+      treepath: 'zhejiang>hangzhou',
       children: [{
         value: 'xihu',
         label: '西湖',
         disabled: true,
+        treepath: 'zhejiang>hangzhou>xihu',
       }, {
         value: 'bingjiang',
         label: '滨江',
+        treepath: 'zhejiang>hangzhou>bingjiang',
       }],
     }, {
       value: 'ningbo',
       label: '宁波',
+      treepath: 'zhejiang>ningbo',
       children: [{
         value: 'zhoushan',
         label: '舟山',
+        treepath: 'zhejiang>ningbo>zhoushan',
       }],
     }, {
       value: 'yiwu',
       label: '义乌',
+      treepath: 'zhejiang>yiwu',
       children: [{
         value: 'jinhua',
         label: '金华',
+        treepath: 'zhejiang>yiwu>jinhua',
       }],
     }, {
       value: 'changxing',
@@ -36,34 +44,43 @@ export const options = [
   }, {
     value: 'jiangsu',
     label: '江苏',
+    treepath: 'jiangsu',
     children: [{
       value: 'nanjing',
       label: '南京',
+      treepath: 'jiangsu>nanjing',
       children: [{
         value: 'zhonghuamen',
         label: '中华门',
+        treepath: 'jiangsu>nanjing>zhonghuamen',
       }],
     }],
   }, {
     value: 'shandong',
     label: '山东',
+    treepath: 'shandong',
     children: [{
       value: 'jinan',
       label: '济南',
+      treepath: 'shandong>jinan',
       children: [{
         value: 'baotuquan',
         label: '趵突泉',
+        treepath: 'shandong>jinan>baotuquan',
       }],
     }],
   }, {
     value: 'longname-0',
     label: '名称很长的选项展示效果0',
+    treepath: 'longname-0',
     children: [{
       value: 'longname-0-0',
       label: '名称很长的选项展示效果0-0',
+      treepath: 'longname-0>longname-0-0',
       children: [{
         value: 'longname-0-0-0',
         label: '名称很长的选项展示效果0-0-0',
+        treepath: 'longname-0>longname-0-0>longname-0-0-0',
       }],
     }],
   },
