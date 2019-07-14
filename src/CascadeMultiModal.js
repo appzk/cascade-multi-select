@@ -37,12 +37,22 @@ class CascadeMultiModal extends React.Component {
 
   onOk() {
     const { value, options, result } = this.state;
-    const { valueList, labelList, leafList } = result;
-    this.data = {
-      value,
-      options,
-      result,
-    };
+    // const { valueList, labelList, leafList } = result;
+
+    this.initResult(value, options);
+    const { valueList, labelList } = this.data.result;
+    const { leafList } = result;
+    // this.data.value = keyArr;
+    // this.data.result = {
+    //   valueList: keyArr,
+    //   labelList: textArr,
+    // };
+
+    // this.data = {
+    //   value,
+    //   options,
+    //   result,
+    // };
     console.log('onOk', valueList, labelList, leafList);
     this.props.onOk(valueList, labelList, leafList);
     this.setState({ visible: false });
@@ -61,6 +71,9 @@ class CascadeMultiModal extends React.Component {
   }
 
   onSelect(valueList, labelList, leafList) {
+
+    // console.log('this.props.showChildrenCheck', this.props.showChildrenCheck);
+    // console.log('valuelist', valueList, labelList, leafList);
     this.setState({
       value: valueList,
       result: {
@@ -92,14 +105,20 @@ class CascadeMultiModal extends React.Component {
   }
 
   getSelectResult(value, dataList, keyArr, textArr, isTop = true) {
+    console.warn('dataList=', dataList, 'value=', value);
+    const { showChildrenCheck } = this.props;
     if (dataList && dataList.length) {
       for (let i = 0; i < dataList.length; i++) {
         const item = dataList[i];
         if (!value.length) { return; }
-        if (value.indexOf(item.value) !== -1) {
+        if (!isTop && value.indexOf(item.value) !== -1) {
+          // console.warn(value, item.value, 'selectResult');
           keyArr.push(item.value);
           textArr.push(item.label);
           value.splice(value.indexOf(item.value), 1);
+        } else if (showChildrenCheck && value.indexOf(item.value) !== -1) {
+          console.log(value, item.value, item, 'istop');
+          this.selectChildrenResult(item, keyArr, textArr);
         }
         if (item.children) {
           this.getSelectResult(value, item.children, keyArr, textArr, false);
@@ -108,12 +127,35 @@ class CascadeMultiModal extends React.Component {
     }
   }
 
+  selectChildrenResult(parentItem, keyArr, textArr) {
+    const pData = parentItem.children;
+    if (pData && pData.length) {
+      for (let i = 0; i < pData.length; i++) {
+        const item = pData[i];
+
+        // if (!isTop && value.indexOf(item.value) !== -1) {
+        // console.warn(value, item.value, 'selectResult');
+        keyArr.push(item.value);
+        textArr.push(item.label);
+        // value.splice(value.indexOf(item.value), 1);
+        // } else if (value.indexOf(item.value) !== -1) {
+        //   console.log(value, item.value, item, 'istop');
+        // }
+        // if (item.children) {
+        //   this.getSelectResult(value, item.children, keyArr, textArr, false);
+        // }
+      }
+    }
+  }
   initResult(value, options) {
     console.log(value, options, 'initResult');
     const keyArr = [];
     const textArr = [];
     const valueList = deepcopy(value);
-    this.getSelectResult(valueList, options, keyArr, textArr);
+    console.log(valueList, 'deepcopy');// 从这里区分level
+    const { showChildrenCheck } = this.props;
+    const isTop = showChildrenCheck;// 顶级不处理
+    this.getSelectResult(valueList, options, keyArr, textArr, isTop);
     this.data.value = keyArr;
     this.data.result = {
       valueList: keyArr,
@@ -171,7 +213,7 @@ class CascadeMultiModal extends React.Component {
         onCancel={() => {
           this.onCancel();
         }}
-      // footer={footer}
+        footer={footer}
       >
         {this.renderContent()}
       </Modal>
@@ -246,6 +288,7 @@ class CascadeMultiModal extends React.Component {
     const { prefixCls } = this.props;
     const { expand } = this.state;
     const { valueList, labelList } = this.data.result;
+    console.log(valueList, labelList, 111);
     if (!labelList) { return null; }
     const arr = [];
     const style = {};
@@ -307,6 +350,7 @@ CascadeMultiModal.defaultProps = {
   allowClear: true,
   locale: 'zh-cn',
   onSelect: () => { },
+  showChildrenCheck: false,
 
   title: '',
   width: 0,
@@ -325,6 +369,7 @@ CascadeMultiModal.propTypes = {
   allowClear: PropTypes.bool,
   locale: PropTypes.string,
   onSelect: PropTypes.func,
+  showChildrenCheck: PropTypes.bool, // 是否显示子集详情,不被父级替代。默认为false
 
   title: PropTypes.string,
   width: PropTypes.number,

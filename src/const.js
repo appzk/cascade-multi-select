@@ -86,6 +86,58 @@ export const options = [
   },
 ];
 
+export const province = [
+  {
+    value: 'zhejiang',
+    label: '浙江',
+    treepath: 'zhejiang',
+    children: [{
+      value: 'hangzhou',
+      label: '杭州',
+      description: '美丽富饶的新一线城市',
+      treepath: 'zhejiang>hangzhou',
+    }, {
+      value: 'ningbo',
+      label: '宁波',
+      treepath: 'zhejiang>ningbo',
+    }, {
+      value: 'yiwu',
+      label: '义乌',
+      treepath: 'zhejiang>yiwu',
+    }, {
+      value: 'changxing',
+      label: '长兴',
+      treepath: 'zhejiang>changxing',
+    }],
+  }, {
+    value: 'jiangsu',
+    label: '江苏',
+    treepath: 'jiangsu',
+    children: [{
+      value: 'nanjing',
+      label: '南京',
+      treepath: 'jiangsu>nanjing',
+    }],
+  }, {
+    value: 'shandong',
+    label: '山东',
+    treepath: 'shandong',
+    children: [{
+      value: 'jinan',
+      label: '济南',
+      treepath: 'shandong>jinan',
+    }],
+  }, {
+    value: 'longname-0',
+    label: '名称很长的选项展示效果0',
+    treepath: 'longname-0',
+    children: [{
+      value: 'longname-0-0',
+      label: '名称很长的选项展示效果0-0',
+      treepath: 'longname-0>longname-0-0',
+    }],
+  },
+];
 // export const options2 = [
 //   {
 //     "children": [
