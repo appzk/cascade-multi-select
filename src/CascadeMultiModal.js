@@ -152,7 +152,7 @@ class CascadeMultiModal extends React.Component {
       valueList: keyArr,
       labelList: textArr,
     };
-    console.log('result', this.data.result);
+    // console.log('result', this.data.result);
   }
 
   renderDialog() {
@@ -313,7 +313,7 @@ class CascadeMultiModal extends React.Component {
     // const that = this;
     Object.keys(mapRoot).forEach((key) => {
 
-      console.log(key, mapRoot[key]);
+      // console.log(key, mapRoot[key]);
       let valueList = [];
       let labelList = [];
       if (mapRoot[key].length > 0) {
@@ -332,10 +332,10 @@ class CascadeMultiModal extends React.Component {
   renderResultList() {
     const { mapRoot } = this.data.result;// valueList, labelList,
 
-    console.log(mapRoot);
+    // console.log(mapRoot);
 
     const myResult = this.renderFirstLevel(mapRoot);
-    console.log('myResult', myResult);
+    // console.log('myResult', myResult);
     return myResult;
 
   }
