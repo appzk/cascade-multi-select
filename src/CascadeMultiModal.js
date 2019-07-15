@@ -316,14 +316,16 @@ class CascadeMultiModal extends React.Component {
       console.log(key, mapRoot[key]);
       let valueList = [];
       let labelList = [];
-      for (let i = 0; i < mapRoot[key].length; i += 1) {
-        const item = mapRoot[key][i];
-        valueList.push(item.value);
-        labelList.push(item.label);
-      }
+      if (mapRoot[key].length > 0) {
+        for (let i = 0; i < mapRoot[key].length; i += 1) {
+          const item = mapRoot[key][i];
+          valueList.push(item.value);
+          labelList.push(item.label);
+        }
 
-      const citys = this.renderChildrenList(valueList, labelList);
-      myResult.push(<div key={key}>{key}{citys}</div>);
+        const citys = this.renderChildrenList(valueList, labelList);
+        myResult.push(<div key={key}>{key}{citys}</div>);
+      }
     });
     return myResult;
   }
