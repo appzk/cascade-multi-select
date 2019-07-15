@@ -82,6 +82,7 @@ class App extends React.Component {
             width={445}
             cascadeSize={2}
             cascadeWidth={220}
+            checkColor="#00a1ff"
             showChildrenCheck={true}
             size={'small'}
             onOk={(valueList, labelList, leafList) => {

@@ -215,7 +215,7 @@ class CascadeMultiModal extends React.Component {
   // {i18n(locale).selected} {this.renderResultNums()}
   renderContent() {
     const { value, options } = this.state;
-    const { cascadeSize, cascadeWidth } = this.props;
+    const { cascadeSize, cascadeWidth, checkColor } = this.props;
     return (
       <div>
         <CascadeMultiPanel
@@ -228,6 +228,7 @@ class CascadeMultiModal extends React.Component {
           cascadeSize={cascadeSize}
           cascadeWidth={cascadeWidth}
           allowRenderResult={false}
+          checkColor={checkColor}
           renderResultNums={this.renderResultNums}
           ref={(r) => { this.refCascadeMulti = r; }}
           mode="mix"
@@ -280,15 +281,10 @@ class CascadeMultiModal extends React.Component {
 
   renderChildrenList(valueList, labelList) {
     const { prefixCls } = this.props;
-    const { expand } = this.state;
+
     if (!labelList) { return null; }
     const arr = [];
-    const style = {};
-    if (expand) {
-      style.height = 'auto';
-    } else {
-      style.maxHeight = 76;
-    }
+
     labelList.forEach((item, index) => {
 
       arr.push(
@@ -304,7 +300,6 @@ class CascadeMultiModal extends React.Component {
     return (
       <ul
         className={`${prefixCls}-model-result-ul`}
-        style={style}
       >
         {arr}
       </ul>
@@ -318,27 +313,31 @@ class CascadeMultiModal extends React.Component {
       // console.log(key, mapRoot[key]);
       let valueList = [];
       let labelList = [];
-      if (mapRoot[key].length > 0) {
-        for (let i = 0; i < mapRoot[key].length; i += 1) {
+      const cityLength = mapRoot[key].length;
+      if (cityLength > 0) {
+        for (let i = 0; i < cityLength; i += 1) {
           const item = mapRoot[key][i];
           valueList.push(item.value);
           labelList.push(item.label);
         }
 
         const citys = this.renderChildrenList(valueList, labelList);
-        myResult.push(<div key={key}>{key}{citys}</div>);
+        myResult.push(<div key={key}>{`${key}(${cityLength})`}{citys}</div>);
       }
     });
     return myResult;
   }
   renderResultList() {
     const { mapRoot } = this.data.result;// valueList, labelList,
-
-    // console.log(mapRoot);
+    const { expand } = this.state;
+    const style = {
+      height: expand ? 'auto' : 76,
+      overflow: expand ? 'auto' : 'hidden',
+    };
 
     const myResult = this.renderFirstLevel(mapRoot);
     // console.log('myResult', myResult);
-    return myResult;
+    return (<div style={style}>{myResult}</div>);
 
   }
 

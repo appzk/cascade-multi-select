@@ -13,9 +13,10 @@ import { Icon } from 'ygd';
 import { getDisabledValueLabel, getCascadeSelected, getWidthStyle } from './utils';
 
 const MyIcon = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_587802_fmlwv8dnoj9.js', // 在 iconfont.cn 上生成
+  scriptUrl: '//at.alicdn.com/t/font_587802_h4a1phcejs.js', // 在 iconfont.cn 上生成
 });
-
+// //at.alicdn.com/t/font_587802_fmlwv8dnoj9.js
+// at.alicdn.com/t/font_587802_h4a1phcejs.js
 
 class CascadeMultiPanel extends React.Component {
   static getDerivedStateFromProps(props, state) {
@@ -538,7 +539,7 @@ class CascadeMultiPanel extends React.Component {
    * 渲染对应级的 ListItem
    */
   renderListItems(dataList, level) {
-    const { prefixCls, config, mode } = this.props;
+    const { prefixCls, config, mode, checkColor } = this.props;
     const { selectArray } = this.state;
     const arr = [];
     // 设置当前级是否开启 checkbox
@@ -554,7 +555,17 @@ class CascadeMultiPanel extends React.Component {
       if (showSearchKeywords && item.label && item.label.indexOf(showSearchKeywords) === -1) {
         return;
       }
+      // ego-checkbox-unchecked
+      // ego-checkbox-indeterminate
+      // ego-checkbox-checked
 
+      // <MyIcon className={`${prefixCls}-model-result-ul-list-right yg-icon-right`} type="ego-checkbox-unchecked" />
+      let iconType = 'ego-checkbox-unchecked';
+      if (item.checked && !item.halfChecked) {
+        iconType = 'ego-checkbox-checked';
+      } else if (item.halfChecked) {
+        iconType = 'ego-checkbox-indeterminate';
+      }
       arr.push(
         <li
           key={item.$id}
@@ -574,20 +585,29 @@ class CascadeMultiPanel extends React.Component {
             treepath={item.treepath}
           >
             {
-              checkable ? <s
-                className={classnames({
-                  'yg-tree-checkbox': true,
-                  'yg-tree-checkbox-indeterminate': item.halfChecked,
-                  'yg-tree-checkbox-checked': item.checked && !item.halfChecked,
-                  'yg-tree-checkbox-checkbox-disabled': item.disabled,
-                  'yg-tree-checkbox-disabled': item.disabled,
-                })}
+              checkable ? <MyIcon
+                type={iconType}
+                style={{ fontSize: 20, verticalAlign: 'middle', color: checkColor }}
                 onClick={() => {
                   if (!item.disabled) {
                     this.onItemChecked(item, level);
                   }
-                }}
-              /> :
+                }} />
+                //  className={`${prefixCls}-model-result-ul-list-right`} <s
+                //   className={classnames({
+                //     'yg-tree-checkbox': true,
+                //     'yg-tree-checkbox-indeterminate': item.halfChecked,
+                //     'yg-tree-checkbox-checked': item.checked && !item.halfChecked,
+                //     'yg-tree-checkbox-checkbox-disabled': item.disabled,
+                //     'yg-tree-checkbox-disabled': item.disabled,
+                //   })}
+                //   onClick={() => {
+                //     if (!item.disabled) {
+                //       this.onItemChecked(item, level);
+                //     }
+                //   }}
+                // />
+                :
                 null
             }
             {item.label}
