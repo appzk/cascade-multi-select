@@ -156,11 +156,11 @@ class CascadeMultiModal extends React.Component {
   }
 
   renderDialog() {
-    const { prefixCls, locale, title, cascadeSize, width } = this.props;
+    const { prefixCls, locale, title, cascadeSize, cascadeWidth, width } = this.props;
     const { visible, value } = this.state;
     if (!visible) { return null; }
     // 设置 dialog 默认宽度
-    const defaultWidth = width || cascadeSize * 150 + 2; // 220 +
+    const defaultWidth = width || cascadeSize * cascadeWidth + 2;
 
     const footer = (
       <React.Fragment>
@@ -215,7 +215,7 @@ class CascadeMultiModal extends React.Component {
   // {i18n(locale).selected} {this.renderResultNums()}
   renderContent() {
     const { value, options } = this.state;
-
+    const { cascadeSize, cascadeWidth } = this.props;
     return (
       <div>
         <CascadeMultiPanel
@@ -225,6 +225,8 @@ class CascadeMultiModal extends React.Component {
           onSelect={(valueList, labelList, leafList) => {
             this.onSelect(valueList, labelList, leafList);
           }}
+          cascadeSize={cascadeSize}
+          cascadeWidth={cascadeWidth}
           allowRenderResult={false}
           renderResultNums={this.renderResultNums}
           ref={(r) => { this.refCascadeMulti = r; }}

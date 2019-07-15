@@ -79,7 +79,9 @@ class App extends React.Component {
             options={province}
             isCleanDisabledLabel
             value={this.state.demo10}
+            width={445}
             cascadeSize={2}
+            cascadeWidth={220}
             showChildrenCheck={true}
             size={'small'}
             onOk={(valueList, labelList, leafList) => {

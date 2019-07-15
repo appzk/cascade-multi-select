@@ -786,12 +786,12 @@ class CascadeMultiPanel extends React.Component {
   }
 
   render() {
-    const { className, prefixCls, cascadeSize, mode, allowRenderResult } = this.props;
+    const { className, prefixCls, cascadeSize, cascadeWidth, mode, allowRenderResult } = this.props;
     const arr = [];
     let minWidth = 0;
     for (let i = 0; i < cascadeSize; i += 1) {
       arr.push(this.renderUlList(i));
-      minWidth = allowRenderResult ? 150 * cascadeSize + 222 : 150 * cascadeSize + 2;
+      minWidth = allowRenderResult ? cascadeWidth * cascadeSize + 222 : cascadeWidth * cascadeSize + 2;
     }
     this.setPanelWidth();
     const back = (

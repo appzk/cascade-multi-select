@@ -202,13 +202,13 @@ class CascadeMultiSelect extends React.Component {
   }
 
   setPanelWidth() {
-    const { cascadeSize } = this.props;
+    const { cascadeSize, width } = this.props;
     const style = {};
-    const width = getWidthStyle(this.refUls, 150);
-    const resultPanelWidth = getWidthStyle(this.refResultPanel, 220);
+    const currwidth = !!width ? getWidthStyle(this.refUls, width / cascadeSize) : getWidthStyle(this.refUls, 220);
+    const resultPanelWidth = getWidthStyle(this.refResultPanel, 290);
     style.width = 0;
     for (let i = 0; i < cascadeSize; i += 1) {
-      style.width += parseInt(width, 0);
+      style.width += parseInt(currwidth, 0);
     }
     style.width += parseInt(resultPanelWidth, 0) + 2;
     this.resultPanelWidth = parseInt(resultPanelWidth, 0);
