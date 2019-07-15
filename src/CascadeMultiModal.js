@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import deepcopy from 'lodash/cloneDeep';
 import { Button, Modal, Icon } from 'ygd';
 
@@ -37,23 +37,11 @@ class CascadeMultiModal extends React.Component {
 
   onOk() {
     const { value, options, result } = this.state;
-    // const { valueList, labelList, leafList } = result;
 
     this.initResult(value, options);
     const { valueList, labelList } = this.data.result;
     const { leafList } = result;
-    // this.data.value = keyArr;
-    // this.data.result = {
-    //   valueList: keyArr,
-    //   labelList: textArr,
-    // };
 
-    // this.data = {
-    //   value,
-    //   options,
-    //   result,
-    // };
-    console.log('onOk', valueList, labelList, leafList);
     this.props.onOk(valueList, labelList, leafList);
     this.setState({ visible: false });
   }
@@ -72,8 +60,6 @@ class CascadeMultiModal extends React.Component {
 
   onSelect(valueList, labelList, leafList) {
 
-    // console.log('this.props.showChildrenCheck', this.props.showChildrenCheck);
-    // console.log('valuelist', valueList, labelList, leafList);
     this.setState({
       value: valueList,
       result: {
@@ -82,7 +68,6 @@ class CascadeMultiModal extends React.Component {
         leafList,
       },
     }, () => {
-      console.log('onSelect', valueList, labelList, leafList);
       this.props.onSelect(valueList, labelList, leafList);
     });
   }
@@ -104,63 +89,70 @@ class CascadeMultiModal extends React.Component {
     });
   }
 
-  getSelectResult(value, dataList, keyArr, textArr, isTop = true) {
-    console.warn('dataList=', dataList, 'value=', value);
+  getSelectResult(value, dataList, keyArr, textArr, parentItem, mapRoot, isTop = true) {
     const { showChildrenCheck } = this.props;
     if (dataList && dataList.length) {
       for (let i = 0; i < dataList.length; i++) {
         const item = dataList[i];
+
         if (!value.length) { return; }
         if (!isTop && value.indexOf(item.value) !== -1) {
           // console.warn(value, item.value, 'selectResult');
           keyArr.push(item.value);
           textArr.push(item.label);
+          if (!!parentItem) {
+            mapRoot[parentItem.label].push(item); // DestArr;
+          }
+
           value.splice(value.indexOf(item.value), 1);
         } else if (showChildrenCheck && value.indexOf(item.value) !== -1) {
-          console.log(value, item.value, item, 'istop');
-          this.selectChildrenResult(item, keyArr, textArr);
+
+          this.selectChildrenResult(item, keyArr, textArr, mapRoot);
         }
         if (item.children) {
-          this.getSelectResult(value, item.children, keyArr, textArr, false);
+          this.getSelectResult(value, item.children, keyArr, textArr, item, mapRoot, false);
         }
       }
     }
   }
 
-  selectChildrenResult(parentItem, keyArr, textArr) {
+  selectChildrenResult(parentItem, keyArr, textArr, mapRoot) {
     const pData = parentItem.children;
     if (pData && pData.length) {
       for (let i = 0; i < pData.length; i++) {
         const item = pData[i];
+        mapRoot[parentItem.label].push(item);
 
-        // if (!isTop && value.indexOf(item.value) !== -1) {
-        // console.warn(value, item.value, 'selectResult');
         keyArr.push(item.value);
         textArr.push(item.label);
-        // value.splice(value.indexOf(item.value), 1);
-        // } else if (value.indexOf(item.value) !== -1) {
-        //   console.log(value, item.value, item, 'istop');
-        // }
-        // if (item.children) {
-        //   this.getSelectResult(value, item.children, keyArr, textArr, false);
-        // }
+
       }
     }
   }
+
+
   initResult(value, options) {
-    console.log(value, options, 'initResult');
+
     const keyArr = [];
     const textArr = [];
+    const mapRoot = {};
+    for (let key of options) {
+      mapRoot[key.label] = [];
+    }
+
     const valueList = deepcopy(value);
-    console.log(valueList, 'deepcopy');// 从这里区分level
     const { showChildrenCheck } = this.props;
     const isTop = showChildrenCheck;// 顶级不处理
-    this.getSelectResult(valueList, options, keyArr, textArr, isTop);
+    // this.mapRoot = mapRoot;
+    this.getSelectResult(valueList, options, keyArr, textArr, null, mapRoot, isTop);
+
     this.data.value = keyArr;
     this.data.result = {
+      mapRoot: mapRoot,
       valueList: keyArr,
       labelList: textArr,
     };
+    console.log('result', this.data.result);
   }
 
   renderDialog() {
@@ -169,7 +161,7 @@ class CascadeMultiModal extends React.Component {
     if (!visible) { return null; }
     // 设置 dialog 默认宽度
     const defaultWidth = width || cascadeSize * 150 + 2; // 220 +
-    console.log('renderDialog', value);
+
     const footer = (
       <React.Fragment>
         <div className="w50 tl">
@@ -288,7 +280,7 @@ class CascadeMultiModal extends React.Component {
     const { prefixCls } = this.props;
     const { expand } = this.state;
     const { valueList, labelList } = this.data.result;
-    console.log(valueList, labelList, 111);
+
     if (!labelList) { return null; }
     const arr = [];
     const style = {};
@@ -298,7 +290,7 @@ class CascadeMultiModal extends React.Component {
       style.maxHeight = 76;
     }
     labelList.forEach((item, index) => {
-      console.log('valueList[index]', valueList[index]);
+
       arr.push(
         <li className={`${prefixCls}-model-result-ul-list`} key={valueList[index]}>
           <span className={`${prefixCls}-model-result-ul-list-content`}>{item}</span>

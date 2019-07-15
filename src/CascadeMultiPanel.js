@@ -189,12 +189,12 @@ class CascadeMultiPanel extends React.Component {
     const treeNodeObj =
       CascadeMultiPanel.getTreeNodeData(dataList, item.$id, null, keyCouldDuplicated);
     const { parentNode } = treeNodeObj;
-    console.log('setFatherCheckState', parentNode, dataList, 'item=', item);
+
 
     if (parentNode) {
       const halfChecked = CascadeMultiPanel.getSiblingChecked(parentNode.children, !checked);
       const chkLength = parentNode.children.filter(item => item.checked === true).length;
-      // console.log('chkLength=', chkLength);
+
       parentNode.chkLength = chkLength;
 
       if (halfChecked) {
@@ -311,10 +311,8 @@ class CascadeMultiPanel extends React.Component {
         itemDisabledNode = this.itemDisabledNodes.pop();
       }
     } else if (level) {
-      console.log('设置父级选中状态 level=', level);
       // 设置父级选中状态
       CascadeMultiPanel.setFatherCheckState(itemNode, itemNode.checked, dataList, keyCouldDuplicated);
-      // console.log('parentNode=', itemNode, dataList, keyCouldDuplicated);
     }
     this.setState({ dataList }, () => {
       this.setSelectResult();
@@ -472,7 +470,7 @@ class CascadeMultiPanel extends React.Component {
    * 渲染对应级的选项面板
    */
   renderUlList(level) {
-    const t = this;
+    const that = this;
     const { prefixCls, notFoundContent, config, locale, keyCouldDuplicated } = this.props;
     const { dataList, selectArray } = this.state;
     if (!dataList.length) {
@@ -529,7 +527,7 @@ class CascadeMultiPanel extends React.Component {
           {
             selectArray[level - 1] && !listArray.length ?
               <span className={classnames([`${prefixCls}-list-noData`])}>{noDataText}</span> :
-              t.renderListItems(listArray, level)
+              that.renderListItems(listArray, level)
           }
         </ul>
       </div>
@@ -547,7 +545,6 @@ class CascadeMultiPanel extends React.Component {
     const checkable = !(config[level] && config[level].checkable === false);
 
     dataList.forEach((item) => {
-      console.log(dataList, level, 'dataList-level', item, 'item');
       // 如果只是用面板，则默认选择第一项
       if (mode === 'independent' && !selectArray[level]) {
         selectArray[level] = item.$id;
