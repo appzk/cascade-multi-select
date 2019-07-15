@@ -276,11 +276,9 @@ class CascadeMultiModal extends React.Component {
     return arr;
   }
 
-  renderResultList() {
+  renderChildrenList(valueList, labelList) {
     const { prefixCls } = this.props;
     const { expand } = this.state;
-    const { valueList, labelList } = this.data.result;
-
     if (!labelList) { return null; }
     const arr = [];
     const style = {};
@@ -309,6 +307,35 @@ class CascadeMultiModal extends React.Component {
         {arr}
       </ul>
     );
+  }
+  renderFirstLevel = (mapRoot) => {
+    const myResult = [];
+    // const that = this;
+    Object.keys(mapRoot).forEach((key) => {
+
+      console.log(key, mapRoot[key]);
+      let valueList = [];
+      let labelList = [];
+      for (let i = 0; i < mapRoot[key].length; i += 1) {
+        const item = mapRoot[key][i];
+        valueList.push(item.value);
+        labelList.push(item.label);
+      }
+
+      const citys = this.renderChildrenList(valueList, labelList);
+      myResult.push(<div key={key}>{key}{citys}</div>);
+    });
+    return myResult;
+  }
+  renderResultList() {
+    const { mapRoot } = this.data.result;// valueList, labelList,
+
+    console.log(mapRoot);
+
+    const myResult = this.renderFirstLevel(mapRoot);
+    console.log('myResult', myResult);
+    return myResult;
+
   }
 
   render() {
