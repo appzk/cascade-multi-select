@@ -18,11 +18,14 @@ class CascadeMultiModal extends React.Component {
 
   constructor(props) {
     super(props);
+    const { value, options } = props;
+    const { cityLength } = this.resetMap(value, options);
     this.state = {
       value: props.value,
       options: props.options,
       visible: false,
       expand: true,
+      cityLength: cityLength,
       result: {},
       selectedNums: 0,
     };
@@ -31,7 +34,7 @@ class CascadeMultiModal extends React.Component {
       options: props.options,
       result: {},
     };
-    const { value, options } = props;
+
     this.initResult(value, options);
   }
 
@@ -59,9 +62,15 @@ class CascadeMultiModal extends React.Component {
   }
 
   onSelect(valueList, labelList, leafList) {
-
+    // this.initResult(valueList, leafList);
+    // valueList 做为value ,再找一个options
+    const { options } = this.props;
+    const { cityLength } = this.resetMap(valueList, options);
+    // console.log(cityLength, 'cityLength');
+    // console.log(valueList, labelList, leafList, 'onselect');
     this.setState({
       value: valueList,
+      cityLength: cityLength,
       result: {
         valueList,
         labelList,
@@ -130,34 +139,40 @@ class CascadeMultiModal extends React.Component {
     }
   }
 
-
-  initResult(value, options) {
-
+  resetMap = (value, options) => {
     const keyArr = [];
     const textArr = [];
+    const valueList = deepcopy(value);
+
     const mapRoot = {};
     for (let key of options) {
       mapRoot[key.label] = [];
     }
-
-    const valueList = deepcopy(value);
     const { showChildrenCheck } = this.props;
-    const isTop = showChildrenCheck;// 顶级不处理
-    // this.mapRoot = mapRoot;
-    this.getSelectResult(valueList, options, keyArr, textArr, null, mapRoot, isTop);
 
-    this.data.value = keyArr;
+    const isTop = showChildrenCheck;// 顶级不处理
+
+    this.getSelectResult(valueList, options, keyArr, textArr, null, mapRoot, isTop);
+    // console.log(mapRoot);
+    return { cityLength: this.getSelectNums(mapRoot), keyArr: keyArr, textArr: textArr, mapRoot: mapRoot };
+  }
+
+  initResult(value, options) {
+    const myMap = this.resetMap(value, options);
+
+    this.data.value = myMap.keyArr;
     this.data.result = {
-      mapRoot: mapRoot,
-      valueList: keyArr,
-      labelList: textArr,
+      cityLength: myMap.cityLength,
+      mapRoot: myMap.mapRoot,
+      valueList: myMap.keyArr,
+      labelList: myMap.textArr,
     };
-    // console.log('result', this.data.result);
+
   }
 
   renderDialog() {
     const { prefixCls, locale, title, cascadeSize, cascadeWidth, width } = this.props;
-    const { visible, value } = this.state;
+    const { visible, cityLength } = this.state;
     if (!visible) { return null; }
     // 设置 dialog 默认宽度
     const defaultWidth = width || cascadeSize * cascadeWidth + 2;
@@ -169,7 +184,7 @@ class CascadeMultiModal extends React.Component {
             已选择
           </span>
           <span className="selectedNum">
-            {value.length}
+            {!!cityLength && `${cityLength}`}
           </span>
           <span>
             个城市
@@ -305,12 +320,20 @@ class CascadeMultiModal extends React.Component {
       </ul>
     );
   }
+  getSelectNums = (mapRoot) => {
+    let cityLength = 0;
+    Object.keys(mapRoot).forEach((key) => {
+
+      cityLength += mapRoot[key].length;
+
+    });
+    return cityLength;
+  }
   renderFirstLevel = (mapRoot) => {
     const myResult = [];
     // const that = this;
     Object.keys(mapRoot).forEach((key) => {
 
-      // console.log(key, mapRoot[key]);
       let valueList = [];
       let labelList = [];
       const cityLength = mapRoot[key].length;
